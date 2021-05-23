@@ -21,7 +21,7 @@ def init(n, block_orientation, rotate, inreverse) :
     return device
 
 def get_message() :
-    f = open("message.txt")
+    f = open("/home/pi/repo/matrixDisplay/message.txt")
     msg = f.read()
     f.close()
     return msg
