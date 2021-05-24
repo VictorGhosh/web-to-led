@@ -4,12 +4,17 @@
     fwrite($myfile, $txt);
     fclose($myfile);
 
-    // system('cd /var/www/html'); // Not needed? shell opens in current directory.
-    system('whoami');
-    system('ls');
-    system('python3 display.py');
-    // $command = escapeshellcmd('python3 /home/pi/repo/matrixDisplay/display.py');
+    // system('whoami');
+    // system('python3 display.py');
     
+    $command = escapeshellcmd('python3 tester.py');
+    $output = shell_exec($command);
+    if ($output == null) {
+        echo 'shell_exec failure';
+    } else {
+        echo $output;
+    }
+
     // $output = shell_exec('python3 display.py');
     // if ($output == null) {
     //     echo 'shell_exec failure';

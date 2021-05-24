@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import re
 import time
@@ -17,7 +16,6 @@ def init(n, block_orientation, rotate, inreverse) :
     serial = spi(port=0, device=0, gpio=noop())
     device = max7219(serial, cascaded=n or 1, block_orientation=block_orientation,
                      rotate=rotate or 0, blocks_arranged_in_reverse_order=inreverse)
-    print("device init success")
     return device
 
 def get_message() :
@@ -29,10 +27,7 @@ def get_message() :
 def slow_scroll(msg, n, block_orientation, rotate, inreverse) :
     # create matrix device
     device = init(n, block_orientation, rotate, inreverse)
-
-    print("printing message")
     show_message(device, msg, fill="white", font=proportional(LCD_FONT), scroll_delay=0.1)
-    print("message complete")
 
 def led_print(msg) :
     parser = argparse.ArgumentParser(description='matrix_demo arguments',
@@ -49,7 +44,8 @@ def led_print(msg) :
 
 if __name__ == "__main__" :
     try :
-        while True :
-            led_print(get_message())
+        led_print("A random message")
+        # print("HERE WE ARE")
+        # led_print(get_message())
     except KeyboardInterrupt :
         pass
